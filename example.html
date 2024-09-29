@@ -37,7 +37,7 @@
     import * as OpenGrid from 'OpenGrid';
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xffffff);
+    scene.background = new THREE.Color(0xebdbcc);
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.set(0, 10, 0);
 
@@ -93,6 +93,7 @@
     const gridShader = {
       gridColor: 0x000000,
       visibleArea: 50,
+      polkaSize: 1
     }
 
     const gui = new GUI();
@@ -103,6 +104,9 @@
     });
     gridFolder.add(gridShader, 'visibleArea', 0, 100).onChange((value) => {
       OpenGrid.Shader.uniforms['visibleArea'].value = value;
+    });
+    gridFolder.add(gridShader, 'polkaSize', 0, 10).onChange((value) => {
+      OpenGrid.Shader.uniforms['polkaSize'].value = value;
     });
   </script>
 </body>

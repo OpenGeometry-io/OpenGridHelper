@@ -102,6 +102,7 @@ function fragmentShaderFun() {
   uniform vec3 cameraPosition;
 
   uniform bool polka;
+  uniform float polpkSize;
   uniform sampler2D polkaTexture;
   
   void main() {
@@ -136,6 +137,7 @@ function vertexShaderFunc() {
 
   vec3 worldPosition;
   uniform bool polka;
+  uniform float polkaSize;
 
   void main() {
     worldPosition = position + offset;
@@ -143,7 +145,7 @@ function vertexShaderFunc() {
     vPosition = worldPosition;
 
     if (polka) {
-      gl_PointSize = 4.0;
+      gl_PointSize = polkaSize;
     }
     gl_Position = projectionMatrix * modelViewMatrix * vec4(vPosition, 1.0);
   }
@@ -155,7 +157,8 @@ const Shader = {
   uniforms: {
     'lineColor': { value: new THREE.Vector3(0, 0, 0) },
     'visibleArea': { value: 25 },
-    'polka': { value: false }
+    'polka': { value: false },
+    'polkaSize': { value: 1 }
   }
 }
 
