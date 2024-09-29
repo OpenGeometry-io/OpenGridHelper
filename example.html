@@ -93,7 +93,7 @@
     const gridShader = {
       gridColor: 0x000000,
       visibleArea: 50,
-      polkaSize: 1
+      polkaSize: 3
     }
 
     const gui = new GUI();
@@ -105,7 +105,7 @@
     gridFolder.add(gridShader, 'visibleArea', 0, 100).onChange((value) => {
       OpenGrid.Shader.uniforms['visibleArea'].value = value;
     });
-    gridFolder.add(gridShader, 'polkaSize', 0, 10).onChange((value) => {
+    gridFolder.add(gridShader, 'polkaSize', 2, 10).onChange((value) => {
       OpenGrid.Shader.uniforms['polkaSize'].value = value;
     });
   </script>

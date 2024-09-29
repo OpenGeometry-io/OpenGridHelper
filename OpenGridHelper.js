@@ -158,7 +158,7 @@ const Shader = {
     'lineColor': { value: new THREE.Vector3(0, 0, 0) },
     'visibleArea': { value: 25 },
     'polka': { value: false },
-    'polkaSize': { value: 1 }
+    'polkaSize': { value: 3 }
   }
 }
 
