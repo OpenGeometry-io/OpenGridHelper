@@ -50,13 +50,24 @@
     const controls = new OrbitControls(camera, renderer.domElement);
     
     const gridColor = hexToRgb(0x000000);
-    const gridHelper = new OpenGrid.Grid("xzy", gridColor, 50, 25, false);
+    const gridHelper = new OpenGrid.Grid("xzy", gridColor, 50, 25, true);
     scene.add(gridHelper);
 
-    const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
-    const boxMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    const boxMesh = new THREE.Mesh(boxGeometry, boxMaterial);
-    scene.add(boxMesh);
+    for (let i = 0; i < 10; i++) {
+      const geometry = new THREE.BoxGeometry(1, 1, 1);
+      const material = new THREE.MeshStandardMaterial({ color: Math.random() * 0xffffff });
+      const cube = new THREE.Mesh(geometry, material);
+      const x = Math.floor(Math.random() * 50) - 25;
+      const z = Math.floor(Math.random() * 50) - 25;
+      cube.position.set(x, 0, z);
+      scene.add(cube);
+    }
+
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+    const light = new THREE.DirectionalLight(0xffffff, 1);
+    light.position.set(10, 10, 0);
+    scene.add(light);
 
     window.addEventListener('resize', () => {
       camera.aspect = window.innerWidth / window.innerHeight;
